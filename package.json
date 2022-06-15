@@ -1,0 +1,19 @@
+{
+  "name": "aws_s3_cleaner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/trustfractal/aws-s3-cleaner",
+  "author": "Strnadj <jan@fractal.id>",
+  "license": "MIT",
+  "scripts": {
+    "package": "ncc build index.js -o dist"
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "aws-sdk": "^2.1037.0",
+    "wildcard-match": "^5.1.2"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.32.0"
+  }
+}

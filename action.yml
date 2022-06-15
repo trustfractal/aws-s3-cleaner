@@ -1,0 +1,27 @@
+name: 'S3 cleanup script'
+description: 'Clean your s3 buckets according rules'
+branding:
+  icon: 'activity'
+  color: 'white'
+inputs:
+  bucket:
+    description: "S3 bucket name"
+    required: true
+  include:
+    description: "Include file list"
+    required: false
+  exclude:
+    description: "Exclude file list"
+    required: false
+  older_than:
+    description: "Older than some time"
+    required: false
+  dry_run:
+    description: "Dry run flag"
+    required: false
+
+outputs:
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
