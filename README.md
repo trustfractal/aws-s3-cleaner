@@ -1,4 +1,4 @@
-# AWS S3 Cleanup task
+# AWS S3 Cleaner task
 
 Runs a cleanup process for S3 bucket.
 
@@ -9,7 +9,7 @@ Usage
   run: echo "::set-output name=date::$(date -v-30d  +'%Y-%m-%d')"
 
 - name: Run cleanup
-  uses: trustfractal/aws-s3-cleanup@v1.0
+  uses: trustfractal/aws-s3-cleaner@v1.0
   with:
     bucket: my-bucket
     include: |

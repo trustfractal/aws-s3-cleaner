@@ -1,4 +1,4 @@
-name: 'S3 cleanup script'
+name: 'S3 cleaner script'
 description: 'Clean your s3 buckets according rules'
 branding:
   icon: 'activity'
@@ -19,8 +19,6 @@ inputs:
   dry_run:
     description: "Dry run flag"
     required: false
-
-outputs:
 
 runs:
   using: 'node12'
