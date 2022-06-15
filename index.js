@@ -47,7 +47,7 @@ const main = async () => {
         }
 
         // Is include filter present and exists at least one match?
-        if (included.length > 0 && !include.find(x => x(item.Key))) {
+        if (include.length > 0 && !include.find(x => x(item.Key))) {
           continue;
         }
 

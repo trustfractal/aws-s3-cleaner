@@ -6,7 +6,7 @@ Usage
 ``` yaml      
 - name: Get date 30 days ago for S3 cleanup 
   id: date
-  run: echo "::set-output name=date::$(date -v-30d  +'%Y-%m-%d')"
+  run: echo "::set-output name=date::$(date -d '30 days ago' +'%Y-%m-%d')"
 
 - name: Run cleanup
   uses: trustfractal/aws-s3-cleaner@v1.0
