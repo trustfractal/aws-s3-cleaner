@@ -52,7 +52,7 @@ const main = async () => {
         }
 
         // Older than is present, but the file is younger
-        if (olderDate && item.LastModified.getTime() > olderDate.getTime()) {
+        if (olderThan && item.LastModified.getTime() > olderThan.getTime()) {
           continue;
         }
 
