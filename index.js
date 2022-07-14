@@ -3,6 +3,7 @@ const AWS = require("aws-sdk");
 const wmatch = require("wildcard-match");
 
 const s3 = new AWS.S3();
+const MAX_OBJECT_COUNT = 500;
 
 const cleanArray = (value) => (value || [])
   .map(x => x.trim())
@@ -29,6 +30,7 @@ const main = async () => {
   core.debug("Iterate over files and test include, exclude filters and dates...");
   let isTruncated = true;
   let lastMarker = undefined;
+  let objects = [];
 
   try {
     while (isTruncated) {
@@ -59,10 +61,21 @@ const main = async () => {
         if (dryRun) {
           console.log(`-> Item ${item.Key} will be removed`);
         } else {
-          await s3.deleteObject({
-            Bucket: bucket,
+          objects.push({
             Key: item.Key,
-          }).promise();
+            VersionId: item.VersionId,
+          });
+
+          if (objects.length > MAX_OBJECT_COUNT) {
+            await s3.deleteObjects({
+              Bucket: bucket,
+              Delete: {
+                Objects: objects,
+              },
+            }).promise();
+
+            objects = [];
+          }
         }
       }
 
@@ -71,6 +84,15 @@ const main = async () => {
       if (rest.NextMarker) {
         lastMarker = rest.NextMarker;
       }
+    }
+
+    if (objects.length) {
+      await s3.deleteObjects({
+        Bucket: bucket,
+        Delete: {
+          Objects: objects,
+        },
+      }).promise();
     }
   } catch (e) {
     core.setFailed(e);
