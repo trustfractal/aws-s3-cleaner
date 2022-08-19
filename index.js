@@ -28,6 +28,9 @@ const main = async () => {
   }
 
   core.debug("Iterate over files and test include, exclude filters and dates...");
+  core.debug(`Exclude filters: ${core.getMultilineInput("exclude")}`);
+  core.debug(`Include filters: ${core.getMultilineInput("include")}`);
+
   let isTruncated = true;
   let lastMarker = undefined;
   let objects = [];
@@ -60,6 +63,7 @@ const main = async () => {
 
         if (dryRun) {
           console.log(`-> Item ${item.Key} will be removed`);
+          core.debug(`-> Item ${item.Key} will be removed`);
         } else {
           objects.push({
             Key: item.Key,
