@@ -28,8 +28,8 @@ const main = async () => {
   }
 
   core.debug("Iterate over files and test include, exclude filters and dates...");
-  core.debug(`Exclude filters: ${core.getMultilineInput("exclude")}`);
-  core.debug(`Include filters: ${core.getMultilineInput("include")}`);
+  core.debug(`Exclude filters: ${JSON.stringify(core.getMultilineInput("exclude"))}`);
+  core.debug(`Include filters: ${JSON.stringify(core.getMultilineInput("include"))}`);
 
   let isTruncated = true;
   let lastMarker = undefined;
