@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "aws-sdk": "^2.1037.0",
+    "aws-sdk": "^2.1354.0",
     "wildcard-match": "^5.1.2"
   },
   "devDependencies": {
